@@ -3,6 +3,7 @@ require 'redmine'
 require 'dispatcher'
 
 Dispatcher.to_prepare :redmine_autotask do
+  require_dependency 'issue_finder'
   unless Changeset.included_modules.include? RedmineAutotask::ChangesetPatch
     Changeset.send(:include, RedmineAutotask::ChangesetPatch)
   end
